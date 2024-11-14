@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title> <!-- Title will be set dynamically -->
+
+    <!-- Embedded CSS for styling -->
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f2f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Global Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        /* Header styling */
+        h1 {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            font-size: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Section heading styling */
+        h2 {
+            font-size: 32px;
+            color: #34495e;
+            margin-top: 40px;
+            text-align: left;
+            font-weight: bold;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #e74c3c;
+            border-radius: 2px;
+        }
+
+        /* Paragraph styling */
+        p {
+            font-size: 18px;
+            color: #555;
+            margin: 20px 0;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* Emphasized text styling */
+        em {
+            font-style: italic;
+            color: #5230cc; /* Updated color for <em> */
+        }
+
+        /* Image styling */
+        img {
+            width: 100%;
+            max-width: 900px;
+            display: block;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Floating image captions */
+        figcaption {
+            text-align: center;
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Add some spacing between sections */
+        section {
+            margin-bottom: 60px;
+        }
+
+        /* Add some responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 30px;
+                padding: 40px;
+            }
+            h2 {
+                font-size: 26px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch the entire body content dynamically (before any changes)
+        const bodyContent = document.body.innerHTML;
+
+        // Create a new div with class 'container'
+        const containerDiv = document.createElement('div');
+        containerDiv.classList.add('container');
+
+        // Set the content of the new div to the original body content
+        containerDiv.innerHTML = bodyContent;
+
+        // Clear the body content before appending the new container
+        document.body.innerHTML = '';
+
+        // Append the newly created div to the body
+        document.body.appendChild(containerDiv);
+
+        // Automatically set the page title to the text content of the first <h1> element
+        const h1 = containerDiv.querySelector('h1');
+        if (h1) {
+            document.title = h1.textContent;
+        }
+
+        // Add captions to all images
+        const images = containerDiv.querySelectorAll('img');
+        images.forEach(function(img, index) {
+            let figcaption = document.createElement('figcaption');
+            figcaption.textContent = img.alt || `Ilustracja ${index + 1}`;
+            img.parentNode.insertBefore(figcaption, img.nextSibling);
+        });
+    });
+</script>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
