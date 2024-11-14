@@ -46,12 +46,47 @@ output_file_path = "artykul.html"
 
 try:
     # Write the generated response to artykul.html (overwriting the file each time)
-    with open(output_file_path, "w", encoding='utf-8') as output_file:
+    with open(output_file_path, "w", encoding="utf-8") as output_file:
         output_file.write(
             completion.choices[0].message.content
         )  # Write response to file
 
     print(f"Article has been written to {output_file_path}")
 
+    # Check if szablon.html exists and contains <body> tag
+    template_file_path = "szablon.html"
+    if os.path.exists(template_file_path):
+        with open(template_file_path, "r", encoding="utf-8") as template_file:
+            template_content = template_file.read()
+
+            # Check if the template contains <body> tag
+            if "<body>" in template_content and "</body>" in template_content:
+                # Find the content between <body> and </body> in the template
+                body_start_index = template_content.index("<body>") + len("<body>")
+                body_end_index = template_content.index("</body>")
+                body_content = template_content[body_start_index:body_end_index]
+
+                # Read the content from artykul.html
+                with open(output_file_path, "r", encoding="utf-8") as article_file:
+                    article_content = article_file.read()
+
+                # Insert the article content into the <body> section
+                new_content = (
+                    template_content[:body_start_index]
+                    + article_content
+                    + template_content[body_end_index:]
+                )
+
+                # Write the final result to podglad.html
+                preview_file_path = "podglad.html"
+                with open(preview_file_path, "w", encoding="utf-8") as preview_file:
+                    preview_file.write(new_content)
+
+                print(f"Preview has been written to {preview_file_path}")
+            else:
+                print(f"Error: {template_file_path} does not contain a <body> </body> tag.")
+    else:
+        print(f"{template_file_path} does not exist, skipping the creation of podglad.html.")
+
 except Exception as e:
-    print(f"An error occurred while writing to the file: {e}")
+    print(f"An error occurred: {e}")

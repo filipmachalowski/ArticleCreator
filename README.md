@@ -9,6 +9,7 @@ This application leverages OpenAI's API to generate HTML-formatted articles base
 - Writes the output article to a file called `artykul.html`.
 - Includes image placeholders (`<img>`) with alt text to guide the image team.
 - Follows a predefined system prompt to ensure content adheres to a specific format.
+- If szablon.html is detected with <body> </body> tags the app will use it to create ready article in podglad.html
 
 ## Requirements
 
@@ -47,6 +48,7 @@ You can obtain an API key by signing up at [OpenAI](https://platform.openai.com/
 ### 4. Prepare the Input
 
 Modify `input.txt` in the project directory with your own article idea.
+Remove `szablon.html` from directory if you don't want the `podglad.html` to be created based on it.
 
 ### 5. Run the Application
 
@@ -58,7 +60,8 @@ python articlecreator.py
 
 ### 6. Output
 
-The generated article will be saved in `artykul.html`. The file will be overwritten each time the script runs, so only the latest generated article will be saved.
+The generated article content will be saved in `artykul.html`. The file will be overwritten each time the script runs, so only the latest generated article will be saved.
+If `szablon.html` was present the `podglad.html` based on it will be created.
 
 ## Customization
 
