@@ -9,7 +9,7 @@ This application leverages OpenAI's API to generate HTML-formatted articles base
 - Writes the output article to a file called `artykul.html`.
 - Includes image placeholders (`<img>`) with alt text to guide the image team.
 - Follows a predefined system prompt to ensure content adheres to a specific format.
-- If szablon.html is detected with <body> </body> tags the app will use it to create ready article in podglad.html
+- If `szablon.html` is detected with `<body> </body>` tags the app will use it to create article preview in `podglad.html`
 
 ## Requirements
 
