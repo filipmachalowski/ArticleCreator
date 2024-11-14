@@ -1,0 +1,16 @@
+# Ignore environment configuration files
+.env
+
+# Ignore io files
+input.txt
+gptoutput.txt
+
+# Ignore common Python temporary files and directories
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignore virtual environment folder (if you use one)
+venv/
+
